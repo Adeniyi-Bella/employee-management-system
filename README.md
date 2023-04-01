@@ -1,6 +1,6 @@
 # Employee management Application
 
-### An employe management system built using Java as the backend and react as the frontend. The backend was bootstrapped using [Spring framework](https://start.spring.io/), frontend was bootstrapped using [Vite](https://vitejs.dev/guide/) and styling with [Tailwind](https://tailwindcss.com/docs/guides/nextjs). 
+- An employe management system built using Java as the backend and react as the frontend. The backend was bootstrapped using [Spring framework](https://start.spring.io/), frontend was bootstrapped using [Vite](https://vitejs.dev/guide/) and styling with [Tailwind](https://tailwindcss.com/docs/guides/nextjs). 
 
 ## Architecture
 

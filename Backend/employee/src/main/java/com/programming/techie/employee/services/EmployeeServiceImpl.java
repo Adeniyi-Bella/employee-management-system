@@ -26,4 +26,44 @@ public class EmployeeServiceImpl implements EmployeeService{
         employeeRepository.save(employeeEntity);
         return employee;
     }
+    // overides the interface method
+    // called from the controller class to get all employees
+    @Override
+    public List<Employee> getAllEmployees() {
+        List<EmployeeEntity> employeeEntities
+                = employeeRepository.findAll();
+
+        List<Employee> employees = employeeEntities
+                .stream()
+                .map(emp -> new Employee(
+                        emp.getId(),
+                        emp.getFirstName(),
+                        emp.getLastName(),
+                        emp.getEmailId()))
+                .collect(Collectors.toList());
+        return employees;
+    }
+
+    // gets a single employee from the database using the id
+    @Override
+    public Employee getEmployeeById(Long id) {
+        EmployeeEntity employeeEntity
+                = employeeRepository.findById(id).get();
+        Employee employee = new Employee();
+        BeanUtils.copyProperties(employeeEntity, employee);
+        return employee;
+    }
+
+    @Override
+    // updates an employee in the database
+    public Employee updateEmployee(Long id, Employee employee) {
+        EmployeeEntity employeeEntity
+                = employeeRepository.findById(id).get();
+        employeeEntity.setEmailId(employee.getEmailId());
+        employeeEntity.setFirstName(employee.getFirstName());
+        employeeEntity.setLastName(employee.getLastName());
+
+        employeeRepository.save(employeeEntity);
+        return employee;
+    }
 }

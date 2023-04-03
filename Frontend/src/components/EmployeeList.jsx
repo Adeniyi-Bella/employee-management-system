@@ -1,27 +1,27 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-// import EmployeeService from "../services/EmployeeService";
-// import Employee from "./Employee";
+import EmployeeService from "../services/EmployeeService";
+import Employee from "./Employee";
 
 const EmployeeList = () => {
   const navigate = useNavigate();
 
   const [loading, setLoading] = useState(true);
   const [employees, setEmployees] = useState(null);
-
-//   useEffect(() => {
-//     const fetchData = async () => {
-//       setLoading(true);
-//       try {
-//         const response = await EmployeeService.getEmployees();
-//         setEmployees(response.data);
-//       } catch (error) {
-//         console.log(error);
-//       }
-//       setLoading(false);
-//     };
-//     fetchData();
-//   }, []);
+  // runs when component mounts and sets employees state to data from api
+  useEffect(() => {
+    const fetchData = async () => {
+      setLoading(true);
+      try {
+        const response = await EmployeeService.getEmployees();
+        setEmployees(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+      setLoading(false);
+    };
+    fetchData();
+  }, []);
 
 //   const deleteEmployee = (e, id) => {
 //     e.preventDefault();
@@ -35,7 +35,7 @@ const EmployeeList = () => {
 //   };
 
   return (
-    <div className="container mx-auto my-8">
+    <div className="container mx-auto my-8 max-w-3xl">
       <div className="h-12">
         <button
           onClick={() => navigate("/addEmployee")}
@@ -64,15 +64,19 @@ const EmployeeList = () => {
           {!loading && (
             <tbody className="bg-white">
               {employees.map((employee) => (
+                // console.log(employee);
                 <Employee
                   employee={employee}
-                  deleteEmployee={deleteEmployee}
+                //   deleteEmployee={deleteEmployee}
                   key={employee.id}></Employee>
-              ))}
+              )
+              )}
             </tbody>
           )}
         </table>
       </div>
+      {/* {JSON.stringify(employees)} */}
+
     </div>
   );
 };

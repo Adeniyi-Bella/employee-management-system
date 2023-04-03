@@ -26,7 +26,7 @@ const AddEmployee = () => {
       .then((response) => {
         //         console.log(response);
         alert("Employee Added Successfully");
-        // navigate("/employeeList");
+        navigate("/");
       })
       .catch((error) => {
         console.log(error);

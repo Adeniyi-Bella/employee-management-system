@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 // CrossOrigin annotation is used to allow requests from a different origin
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = "*")
 // RestController annotation is used to create a restful web service
 @RestController
 // RequestMapping annotation is used to map web requests onto specific handler methods
